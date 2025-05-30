@@ -1,49 +1,49 @@
-#include "Header.h"
+ï»¿#include "Header.h"
 
 struct polynom* get_list(void)
 {
-    struct polynom *head, *prev, *current;
+    struct polynom* head, * prev, * current;
     head = prev = NULL;
-    char *endptr;
+    char* endptr;
     char input[SIZE];
-    fputs("?÷?ýð¢? ô?òÿ?ÿ¢??¬ ¡¢?ô??ð: ", stdout);
+    fputs("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ ÑÑ‚ÐµÐ¿ÐµÐ½Ð¸: ", stdout);
     while (s_gets(input, SIZE) != NULL && input[0] != '\0')
     {
-        // ?«ý??¯?? ôÿ?¯¢¬ ô?ý ¡¢ £ò¢£ £(¢?ò£©ð? £òÿ?ÿ¢??¬)
+        // Ð’Ñ‹Ð´ÐµÐ»ÑÐµÐ¼ Ð¿Ð°Ð¼ÑÑ‚ÑŒ Ð¿Ð¾Ð´ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñƒ(Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ)
         current = (struct polynom*)malloc(sizeof(struct polynom));
         if (current == NULL)
             exit(1);
-        // ?¡?ð ­¢? ò? ??¬, ¢??ýÿ ¢?ò£©ð? £òÿ?ÿ¢??¬ - ­¢? ò? ??¬
+        // Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾ ÐºÐ¾Ñ€ÐµÐ½ÑŒ, Ñ‚Ð¾Ð³Ð´Ð° Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ - ÑÑ‚Ð¾ ÐºÐ¾Ñ€ÐµÐ½ÑŒ
         if (head == NULL)
             head = current;
-        //??ÿ§? ¦?ô?¯?? ¢?ò£©ð? £òÿ?ÿ¢??¬ ò ô ?ý«ý£©??£ 
+        //Ð˜Ð½Ð°Ñ‡Ðµ Ñ†ÐµÐ¿Ð»ÑÐµÐ¼ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ Ðº Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÐµÐ¼Ñƒ 
         else
             prev->next = current;
-        // ?¡??ýÿ ô ?ýô????ÿ??, §¢? ö£ý£©??? ????¢ ?? ö«¢¬ 
+        // Ð’ÑÐµÐ³Ð´Ð° Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ð»Ð¾Ð³Ð°ÐµÐ¼, Ñ‡Ñ‚Ð¾ Ð±ÑƒÐ´ÑƒÑ‰ÐµÐ³Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð½Ðµ Ð±Ñ‹Ñ‚ÑŒ 
         current->next = NULL;
 
-        // ? ??ö ÿ?£?¢ ¡¢ ?ò£ ÷ long
-        // ?òÿ?ÿ¢??¬ ?ÿ £òÿ?ÿ¢??¬, ?ÿ ô? ÷«? ??ô ??ö ÿ??÷ÿ??«? ¡ð?÷?? ÷ ¡¢ ?ò?
-        // ?¡?ð £¡ô?¥, endptr ö£ý?¢ £òÿ?«÷ÿ¢¬ ?ÿ ¡??ý£®©ð? ?ÿ ô?¡??ý?ð? ô ??ö ÿ??÷ÿ??«? ¡ð?÷????.
-        // ????¢? ô? ?ýÿ¢¬ NULL
+        // ÐŸÑ€ÐµÐ¾Ð±Ñ€Ð°Ð·ÑƒÐµÑ‚ ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð² long
+        // Ð£ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ð° ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ, Ð½Ð° Ð¿ÐµÑ€Ð²Ñ‹Ð¹ Ð½ÐµÐ¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÑÐ¸Ð¼Ð²Ð¾Ð» Ð² ÑÑ‚Ñ€Ð¾ÐºÐµ
+        // Ð•ÑÐ»Ð¸ ÑƒÑÐ¿ÐµÑ…, endptr Ð±ÑƒÐ´ÐµÑ‚ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð° ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ Ð·Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¼ Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð¼.
+        // ÐœÐ¾Ð¶ÐµÑ‚Ðµ Ð¿ÐµÑ€ÐµÐ´Ð°Ñ‚ÑŒ NULL
         current->degree = strtol(input, &endptr, 10);
         check_num(endptr, input);
 
-        fputs("?÷?ýð¢? ò?­¤¤ð¦ð??¢: ", stdout);
+        fputs("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾ÑÑ„Ñ„Ð¸Ñ†Ð¸ÐµÐ½Ñ‚: ", stdout);
         s_gets(input, SIZE);
         current->coeff = strtol(input, &endptr, 10);
         check_num(endptr, input);
 
-        // ?? ?ýÿ?? ¢?ò£©ð? £òÿ?ÿ¢??¬ ?ÿ ö£ý£©??
+        // ÐŸÐµÑ€ÐµÐ´Ð°ÐµÐ¼ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ð° Ð±ÑƒÐ´ÑƒÑ‰ÐµÐµ
         prev = current;
-        fputs("?÷?ýð¢? ô?òÿ?ÿ¢??¬ ¡¢?ô??ð (ð?ð ô£¡¢£® ¡¢ ?ò£ ý?¯ ô ?ò ÿ©??ð¯ ÷÷?ýÿ): ", stdout);
+        fputs("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ ÑÑ‚ÐµÐ¿ÐµÐ½Ð¸ (Ð¸Ð»Ð¸ Ð¿ÑƒÑÑ‚ÑƒÑŽ ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð´Ð»Ñ Ð¿Ñ€ÐµÐºÑ€Ð°Ñ‰ÐµÐ½Ð¸Ñ Ð²Ð²Ð¾Ð´Ð°): ", stdout);
     }
     return head;
 }
 
 void put_list(struct polynom* current)
 {
-    // ?? ÷ÿ¯ ô ?÷? òÿ ?£??ÿ ý?¯ ò?  ?ò¢???? ÷«÷?ýÿ ?????§???ÿ
+    // ÐŸÐµÑ€Ð²Ð°Ñ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð½ÑƒÐ¶Ð½Ð° Ð´Ð»Ñ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾Ð³Ð¾ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð¼Ð½Ð¾Ð³Ð¾Ñ‡Ð»ÐµÐ½Ð°
     if (current != NULL)
     {
         printf("(%.0lf)*x^%d", current->coeff, current->degree);
@@ -62,19 +62,19 @@ void check_num(char* endptr, char* str)
 {
     if (endptr == str)
     {
-        printf("?? £ýÿ??¡¬ ô ??ö ÿ??÷ÿ¢¬ ¡¢ ?ò£ ÷ §ð¡??.\n");
+        printf("ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð² Ñ‡Ð¸ÑÐ»Ð¾.\n");
         exit(2);
     }
 }
 
 struct polynom* make_polynom(struct polynom* head_L1, struct polynom* head_L2)
 {
-    struct polynom *head = NULL, *prev = NULL, *current;
-    struct polynom *current_L1 = head_L1;
-    struct polynom *current_L2 = head_L2;
+    struct polynom* head = NULL, * prev = NULL, * current;
+    struct polynom* current_L1 = head_L1;
+    struct polynom* current_L2 = head_L2;
     int max_deg_L1 = -1;
 
-    // ??ð¡ò ­?????¢ÿ ¡ ?ÿò¡ð?ÿ?¬?«? ô?òÿ?ÿ¢???? £ ô? ÷??? ô??ð???ÿ
+    // ÐŸÐ¾Ð¸ÑÐº ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ñ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¼ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÐµÐ¼ Ñƒ Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ Ð¿Ð¾Ð»Ð¸Ð½Ð¾Ð¼Ð°
     while (current_L1 != NULL)
     {
         if (current_L1->degree > max_deg_L1)
@@ -82,10 +82,10 @@ struct polynom* make_polynom(struct polynom* head_L1, struct polynom* head_L2)
         current_L1 = current_L1->next;
     }
 
-    //???¬¨?? ¦ðò? ö??ð¢ ô? ÷¢? ??£ ?????§???£
+    //Ð‘Ð¾Ð»ÑŒÑˆÐ¾Ð¹ Ñ†Ð¸ÐºÐ» Ð±ÐµÐ¶Ð¸Ñ‚ Ð¿Ð¾ Ð²Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð¼Ð½Ð¾Ð³Ð¾Ñ‡Ð»ÐµÐ½Ñƒ
     while (current_L2 != NULL)
     {
-        // ?¡?ð ?ÿ¨?ð, ¢? ¡??ýÿ?? ??÷«? ¡ôð¡?ò
+        // Ð•ÑÐ»Ð¸ Ð½Ð°ÑˆÐ»Ð¸, Ñ‚Ð¾ ÑÐ¾Ð·Ð´Ð°ÐµÐ¼ Ð½Ð¾Ð²Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº
         if (current_L2->degree > max_deg_L1)
         {
             current = (struct polynom*)malloc(sizeof(struct polynom));
